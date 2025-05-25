@@ -11,7 +11,10 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     libxml2-dev \
     libzip-dev \
+    && apt-get install -y libjpeg-dev libfreetype6-dev libwebp-dev \
+    && docker-php-ext-configure gd --with-jpeg --with-freetype --with-webp \
     && docker-php-ext-install pdo pdo_mysql zip gd
+
 
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite
