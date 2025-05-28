@@ -158,6 +158,12 @@
                                     </a>
                                 </li>
                                 <li class="menu-item">
+                                    <a href="{{route('shop.index')}}" class="">
+                                        <div class="icon"><i class="icon-settings"></i></div>
+                                        <div class="text">Shop</div>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
                                     <form method="POST" action="{{ route('logout') }}"  id="logout-form">
                                         @csrf
                                         <a href="{{ route('logout') }}" class="" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

@@ -97,22 +97,73 @@
             </tbody>
           </table>
           <div class="cart-table-footer">
-            <form action="#" class="position-relative bg-body">
-              <input class="form-control" type="text" name="coupon_code" placeholder="Coupon Code">
+          @if (!Session::has('coupon'))
+               <form action="{{ route('cart.apply.coupon') }}" method="POST" class="position-relative bg-body">
+            @csrf
+            @method('POST')
+              <input class="form-control" type="text" name="coupon_code" placeholder="Coupon Code" value="" >
               <input class="btn-link fw-medium position-absolute top-0 end-0 h-100 px-4" type="submit"
                 value="APPLY COUPON">
             </form>
+          @elseif
+            <form action="{{ route('cart.remove.coupon') }}" method="POST" class="position-relative bg-body">
+            @csrf
+            @method('DELETE')
+              <input class="form-control" type="text" name="coupon_code" placeholder="Coupon Code" value="@if(Session::has('coupon')){{Session::get('coupon')['code']}} Applied! @endif" >
+              <input class="btn-link fw-medium position-absolute top-0 end-0 h-100 px-4" type="submit"
+                value="REMOVE COUPON">
+            </form>
+          @endif
+
             <form action="post" action="{{route('cart.empty')}}">
             @csrf
             @method('DELETE')
             <button class="btn btn-light" type="submit">CLEAR CART</button>
             </form>
           </div>
+          <div>
+            @if(Session::has('success'))
+            <div class="alert alert-success text-center">
+              {{Session::get('success')}}
+            </div>
+            @elseif(Session::has('error'))
+            <div class="alert alert-danger text-center">
+              {{Session::get('error')}} 
+          </div>
+          @endif
         </div>
         <div class="shopping-cart__totals-wrapper">
           <div class="sticky-content">
             <div class="shopping-cart__totals">
               <h3>Cart Totals</h3>
+              @if (Session::has('discounts'))
+                 <table class="cart-totals">
+                  <tbody>
+                    <tr>
+                      <th>Subtotal</th>
+                      <td>${{Cart::instance('cart')->subtotal()}}</td>
+                    </tr>
+                    <tr>
+                        <th>Discount {{Session::get('coupon')['code']}}</th>
+                        <td>${{Session::get('discounts'['code'])}}</td>
+                      </tr>
+                      <tr>
+                        <th>Subtotal After Discount</th>
+                        <td>${{Session::get('discounts')['subtotal']}}</td>
+                      </tr>
+                      <tr>
+                        <th>shipping</th>
+                        <td>$Free</td>
+                      <tr>
+                        <th>VAT</th>
+                        <td>${{Session::get('discounts')['tax']}}</td>
+                      <tr>
+                        <th>Total</th>
+                        <td>${{Session::get('discounts')['total']}}</td>
+                      </tr>
+                  </tbody>
+                </table> 
+              @else
               <table class="cart-totals">
                 <tbody>
                   <tr>
@@ -135,6 +186,7 @@
                   </tr>
                 </tbody>
               </table>
+              @endif
             </div>
             <div class="mobile_fixed-btn_wrapper">
               <div class="button-wrapper container">
