@@ -99,13 +99,13 @@
           <div class="cart-table-footer">
           @if (!Session::has('coupon'))
                <form action="{{ route('cart.apply.coupon') }}" method="POST" class="position-relative bg-body">
-            @csrf
-            @method('POST')
+              @csrf
+              @method('POST')
               <input class="form-control" type="text" name="coupon_code" placeholder="Coupon Code" value="" >
               <input class="btn-link fw-medium position-absolute top-0 end-0 h-100 px-4" type="submit"
                 value="APPLY COUPON">
             </form>
-          @elseif
+          @else
             <form action="{{ route('cart.remove.coupon') }}" method="POST" class="position-relative bg-body">
             @csrf
             @method('DELETE')
@@ -120,7 +120,6 @@
             @method('DELETE')
             <button class="btn btn-light" type="submit">CLEAR CART</button>
             </form>
-          </div>
           <div>
             @if(Session::has('success'))
             <div class="alert alert-success text-center">
@@ -190,7 +189,7 @@
             </div>
             <div class="mobile_fixed-btn_wrapper">
               <div class="button-wrapper container">
-                <a href="checkout.html" class="btn btn-primary btn-checkout">PROCEED TO CHECKOUT</a>
+                <a href="{{route('cart.checkout')}}" class="btn btn-primary btn-checkout">PROCEED TO CHECKOUT</a>
               </div>
             </div>
           </div>

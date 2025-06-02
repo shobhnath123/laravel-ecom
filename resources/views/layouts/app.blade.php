@@ -269,7 +269,7 @@
 
       <div class="logo">
         <a href="index.html">
-          <img src="assets/images/logo.png" alt="Uomo" class="logo__image d-block" />
+          <img src="{{ asset('assets/images/logo.png')}}" alt="Uomo" class="logo__image d-block" />
         </a>
       </div>
 
@@ -389,7 +389,7 @@
       <div class="header-desk header-desk_type_1">
         <div class="logo">
           <a href="{{route('home.index')}}">
-            <img src="assets/images/logo.png" alt="Uomo" class="logo__image d-block" />
+            <img src="{{ asset('assets/images/logo.png')}}" alt="Uomo" class="logo__image d-block" />
           </a>
         </div>
 
@@ -511,7 +511,7 @@
         <div class="footer-column footer-store-info col-12 mb-4 mb-lg-0">
           <div class="logo">
             <a href="{{route('home.index')}}">
-              <img src="assets/images/logo.png" alt="SurfsideMedia" class="logo__image d-block" />
+              <img src="{{ asset('assets/images/logo.png')}}" alt="SurfsideMedia" class="logo__image d-block" />
             </a>
           </div>
           <p class="footer-address">123 Beach Avenue, Surfside City, CA 00000</p>

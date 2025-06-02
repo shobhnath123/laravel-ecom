@@ -120,7 +120,7 @@
                                     </a>
                                     <ul class="sub-menu">
                                         <li class="sub-menu-item">
-                                            <a href="orders.html" class="">
+                                            <a href="{{route('admin.orders')}}" class="">
                                                 <div class="text">Orders</div>
                                             </a>
                                         </li>
@@ -215,7 +215,7 @@
                                                         </div>
                                                         <div class="flex items-center justify-between gap20 flex-grow">
                                                             <div class="name">
-                                                                <a href="product-list.html" class="body-text">Dog Food
+                                                                <a href="#" class="body-text">Dog Food
                                                                     Rachael Ray Nutrish®</a>
                                                             </div>
                                                         </div>
@@ -229,7 +229,7 @@
                                                         </div>
                                                         <div class="flex items-center justify-between gap20 flex-grow">
                                                             <div class="name">
-                                                                <a href="product-list.html" class="body-text">Natural
+                                                                <a href="#" class="body-text">Natural
                                                                     Dog Food Healthy Dog Food</a>
                                                             </div>
                                                         </div>
@@ -243,7 +243,7 @@
                                                         </div>
                                                         <div class="flex items-center justify-between gap20 flex-grow">
                                                             <div class="name">
-                                                                <a href="product-list.html" class="body-text">Freshpet
+                                                                <a href="#" class="body-text">Freshpet
                                                                     Healthy Dog Food and Cat</a>
                                                             </div>
                                                         </div>
@@ -262,11 +262,11 @@
                                                 <ul>
                                                     <li class="product-item gap14 mb-10">
                                                         <div class="image no-bg">
-                                                            <img src="{{asset('images/products/20.png') }}" alt="">
+                                                            <img src="{{ asset('images/products/20.png')}}" alt="">
                                                         </div>
                                                         <div class="flex items-center justify-between gap20 flex-grow">
                                                             <div class="name">
-                                                                <a href="product-list.html" class="body-text">Sojos
+                                                                <a href="#" class="body-text">Sojos
                                                                     Crunchy Natural Grain Free...</a>
                                                             </div>
                                                         </div>
@@ -280,7 +280,7 @@
                                                         </div>
                                                         <div class="flex items-center justify-between gap20 flex-grow">
                                                             <div class="name">
-                                                                <a href="product-list.html" class="body-text">Kristin
+                                                                <a href="#" class="body-text">Kristin
                                                                     Watson</a>
                                                             </div>
                                                         </div>
@@ -294,7 +294,7 @@
                                                         </div>
                                                         <div class="flex items-center justify-between gap20 flex-grow">
                                                             <div class="name">
-                                                                <a href="product-list.html" class="body-text">Mega
+                                                                <a href="#" class="body-text">Mega
                                                                     Pumpkin Bone</a>
                                                             </div>
                                                         </div>
@@ -308,7 +308,7 @@
                                                         </div>
                                                         <div class="flex items-center justify-between gap20 flex-grow">
                                                             <div class="name">
-                                                                <a href="product-list.html" class="body-text">Mega
+                                                                <a href="#" class="body-text">Mega
                                                                     Pumpkin Bone</a>
                                                             </div>
                                                         </div>
