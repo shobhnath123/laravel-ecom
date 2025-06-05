@@ -60,7 +60,15 @@
                                     <td class="text-center">${{$order->subtotal}}</td>
                                     <td class="text-center">${{$order->tax}}</td>
                                     <td class="text-center">${{$order->total}}</td>
-                                    <td class="text-center">{{$order->status}}</td>
+                                    <td class="text-center">
+                                         @if ($order->status == 'delivered')
+                                            <span class="badge bg-warning text-success">Delivered</span>
+                                        @elseif ($order->status == 'canceled')                            
+                                            <span class="badge bg-danger text-success">Canceled</span> 
+                                            @else 
+                                            <span class="badge bg-warning"> {{$order->status}}</span>      
+                                        @endif
+                                    </td>
                                     <td class="text-center">{{$order->created_at}}</td>
                                     <td class="text-center">{{$order->orderItems->count()}}</td>
                                     <td class="text-center">{{$order->delivered_date}}</td>

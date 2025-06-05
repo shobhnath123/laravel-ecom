@@ -119,6 +119,9 @@
                     </div>
                 </div>
                 <div class="table-responsive">
+                    @if (Session::has('status'))
+                        <p class="alert alert-success">{{Session::get('status')}}</p>                        
+                    @endif
                     <table class="table  table-bordered table-striped table-transaction">                       
                         <tr>
                             <th>Order No</th>
@@ -143,14 +146,13 @@
                             <span class="badge bg-warning text-success">Delivered</span>
                         @elseif ($order->status == 'canceled')                            
                             <span class="badge bg-danger text-success">Canceled</span> 
-                            @else {{$order->status}}          
+                            @else 
+                            <span class="badge bg-warning"> {{$order->status}}</span>      
                         @endif
                         </tr>                 
                     </table>
                 </div>               
             </div>
-
-
             <div class="wg-box">
                 <div class="flex items-center justify-between gap10 flex-wrap">
                     <div class="wg-filter flex-grow">
@@ -204,13 +206,11 @@
                         </tbody>
                     </table>
                 </div>
-
                 <div class="divider"></div>
                 <div class="flex items-center justify-between flex-wrap gap10 wgp-pagination">
                 {{$orderItems->links('pagination::bootstrap-5')}}
                 </div>
             </div>
-
             <div class="wg-box mt-5">
                 <h5>Shipping Address</h5>
                 <div class="my-account__address-item col-md-6">
@@ -226,7 +226,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="wg-box mt-5">
                 <h5>Transactions</h5>
                 <table class="table table-striped table-bordered table-transaction">
@@ -260,8 +259,39 @@
                     </tbody>
                 </table>
             </div>
+            @if ($order->status == 'ordered' )
+                  <div class="wg-box mt-5 text-right">
+                <form action="{{ route('user.order.cancel') }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <input type="hidden" name="order_id" value="{{ $order->id }}">
+                    <button class="btn btn-danger cancel-order" type="submit">Cancel Order</button>
+                </form>
+            </div>
+            @endif          
             </div>            
         </div>
     </section>
 </main>
 @endsection
+@push('scripts')
+<script>
+    $(function() {
+        $('.cancel-order').on('click', function(e) {
+            e.preventDefault();
+            var form = $(this).closest('form');
+            swal({
+                title: "Are you sure?",
+                text: "You want to Cancel this order?",
+                type: "warning",
+                buttons: ["No", "Yes"],
+                dangerMode: true
+            }).then(function(result) {
+                if (result) {
+                    form.submit();
+                }
+            });
+        });
+    });
+</script>
+@endpush

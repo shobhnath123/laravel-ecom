@@ -98,24 +98,25 @@
 
 @endsection
 
-@push('script')
+@push('scripts')
 <script>
-$(function(){
-    $('.delte').on('click',function(e){   
-    e.preventDefault();
-    var form = $(this).closet('form');
-    swal({
-        title:"Are you Sure?",
-        text:"You want to delete this record?",
-        type:"warning",
-        button:["Yes","No"],
-        confirmButtonColor:'#dc3545'
-    }).then(function(reult){
-        if(result){
-            form.submit();
-        }
+    $(function() {
+        $('.delete').on('click', function(e) {
+            e.preventDefault();
+            var form = $(this).closest('form');
+
+            swal({
+                title: "Are you sure?",
+                text: "You want to delete this record?",
+                type: "warning",
+                buttons: ["No", "Yes"],
+                dangerMode: true
+            }).then(function(result) {
+                if (result) {
+                    form.submit();
+                }
+            });
+        });
     });
-     });
-});
 </script>
 @endpush
