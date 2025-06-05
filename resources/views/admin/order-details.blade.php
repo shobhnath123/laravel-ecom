@@ -32,7 +32,7 @@
                 </div>
                 <div class="table-responsive">
                 @if(Session::has('status'))
-                <p class="alert alert-succes"> {{Session::get('status')}} </p>
+                <p class="alert alert-success"> {{Session::get('status')}} </p>
                 @endif
                     <table class="table table-striped table-bordered">                       
                         <tr>
@@ -64,9 +64,7 @@
                     </table>
                 </div>               
             </div>
-
-
-            <div class="wg-box">
+            <div class="wg-box mt-5">
                 <div class="flex items-center justify-between gap10 flex-wrap">
                     <div class="wg-filter flex-grow">
                         <h5>Ordered Items</h5>
@@ -175,8 +173,7 @@
                     </tbody>
                 </table>
             </div>
-
-             <div class="wg-box mt-5">
+            <div class="wg-box mt-5 mb-5">
                 <h5>Update Order Status</h5>
                 <form action="{{ route('admin.order.update.status') }}" method="POST">
                     @csrf
@@ -185,16 +182,15 @@
                     <div class="row">  
                         <div class="col-md-3">                       
                            <div class="select">
-                             <select name="order_status" id="order_status" class="form-control">
+                             <select name="order_status" id="order_status" >
                                 <option value="ordered" {{ $order->status == 'ordered' ? 'selected' : '' }}>Ordered</option>
-                                <option value="pending" {{ $order->status == 'pending' ? 'selected' : '' }}>Pending</option>
                                 <option value="delivered" {{ $order->status == 'delivered' ? 'selected' : '' }}>Delivered</option>
                                 <option value="canceled" {{ $order->status == 'canceled' ? 'selected' : '' }}>Canceled</option>
                             </select>
-                           </div>
-                            <div class="col-md-4 mt-3">
-                                <input type="submit" class="btn btn-primary tf-button w208"> Update Status </button>
-                            </div>
+                           </div>                           
+                    </div>
+                    <div class="col-md-4 mt-3">
+                        <button  type="submit" class="btn btn-primary tf-button w208"> Update Status </button>
                     </div>
                 </form>
             </div>

@@ -458,8 +458,7 @@
                     </div>
                     <div class="main-content">
                         @yield("content")
-
-                        <div class="bottom-page">
+                        <div class="bottom-page mt-5 ">
                             <div class="body-text">Copyright © 2024 Mywebsolutions</div>
                         </div>
                     </div>
